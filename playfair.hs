@@ -1,3 +1,6 @@
+import Data.List (elemIndex)
+import Data.Maybe (fromJust)
+
 countChar :: Char -> String -> Int
 countChar c (x:rest)
   |  c == x    = 1 + countChar c rest
@@ -72,3 +75,34 @@ getFirstWord (x:xs)
   | x == ' '  = []
   | otherwise = x : getFirstWord xs
 getFirstWord [] = []
+
+encryptPair :: String -> (Char, Char) -> (Char, Char)
+encryptPair grid (a, b) =
+  let 
+      indexA = fromJust (elemIndex a grid)
+      indexB = fromJust (elemIndex b grid)
+
+      rowA = indexA `div` 5
+      colA = indexA `mod` 5
+      rowB = indexB `div` 5
+      colB = indexB `mod` 5
+  in
+      applyRules rowA colA rowB colB
+
+  where
+    
+    applyRules rA cA rB cB
+      | rA == rB =
+          let newColA = (cA + 1) `mod` 5
+              newColB = (cB + 1) `mod` 5
+          in (getCharByCoords rA newColA, getCharByCoords rB newColB)
+      | cA == cB =
+          let newRowA = (rA + 1 ) `mod` 5
+              newRowB = (rB + 1 ) `mod` 5
+          in (getCharByCoords newRowA cA, getCharByCoords newRowB cB)
+
+      | otherwise = (getCharByCoords rA cB, getCharByCoords rB cA)
+    
+    getCharByCoords r c = grid !! (r * 5 + c)
+
+
