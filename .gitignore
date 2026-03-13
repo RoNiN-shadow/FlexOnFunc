@@ -1,0 +1,8 @@
+playfair
+
+*.o
+*.hi
+
+*.out
+*.exe
+*.so
