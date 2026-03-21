@@ -12,3 +12,6 @@ isPalindrome :: String -> Bool
 isPalindrome s = clean s == reverse (clean s)
       where
         clean s = filter isAlpha (map toLower s)
+
+fibs :: [Int]
+fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
