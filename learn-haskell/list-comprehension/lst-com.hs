@@ -7,4 +7,5 @@ primes :: [Int]
 primes = [x| x <- [1..], isPrime x]
 
 
+removeNonUppercase :: [Char] -> [Char]
 removeNonUppercase st = [c| c <- st, c `elem` ['A'..'Z']]
