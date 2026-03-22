@@ -45,3 +45,10 @@ bmiCategory w h
     | otherwise     = Obese
     where
       bmi = w / (h *h)
+
+distance :: (Double, Double) -> (Double, Double) -> Double
+distance (x1, y1) (x2, y2) = 
+  let
+    x = x1 - x2
+    y = y1 - y2
+  in sqrt(x*x + y*y)
