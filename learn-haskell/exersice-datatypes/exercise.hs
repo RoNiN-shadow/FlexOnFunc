@@ -32,3 +32,16 @@ instance Show Shape where
       show (Circle r) = "Circle with radius " ++ show r
       show(Reactangle a b) = "Reactangle " ++ show a ++ "x" ++ show b
       show (Triangle a b c) = "Triangle " ++ show a ++ " " ++ show b ++ " " ++ show c
+
+
+data BMICategory = Underweight | Normal | Overweight | Obese
+      deriving (Show)
+
+bmiCategory :: Double -> Double -> BMICategory
+bmiCategory w h
+    | bmi < 18.5  = Underweight
+    | bmi < 25.5 = Normal
+    | bmi < 30.0 = Overweight
+    | otherwise     = Obese
+    where
+      bmi = w / (h *h)
