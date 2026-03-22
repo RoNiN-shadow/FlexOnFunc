@@ -25,3 +25,9 @@ tell (x:y:_) = "This list is long, here are first two elements: " ++ show x ++ "
 length' :: (Num b) => [a] -> b
 length' [] = 0
 length' (_:xs) = 1 + length' xs
+
+densityTell :: (RealFloat a) => a -> String
+densityTell density
+    | density < 1.2     = "Wow, you're going far away in the sky!"
+    | density <= 1000.0 = "Have fun swiming bro!"
+    | otherwise         = "If it's sink or swim, you're going to sink"
