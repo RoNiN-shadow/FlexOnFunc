@@ -16,3 +16,9 @@ take' n _
   | n <= 0      = []
 take' _ []      = []
 take' n (x:xs)  = x : take' (n-1) xs 
+
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' a [] = False
+elem' a (x:xs)
+  | x == a    = True
+  | otherwise = a `elem'` xs
