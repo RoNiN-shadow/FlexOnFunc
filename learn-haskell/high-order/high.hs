@@ -31,3 +31,12 @@ numLongChains :: Int
 numLongChains = length (filter isLong (map chain [1..100]))
     where
       isLong xs = length xs > 15
+
+sum' :: (Num a) => [a] -> a
+sum' = foldl (+) 0
+
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' y ys = foldl (\acc x -> if x == y then True else acc) False ys
+
+containsTree :: [Int] -> Bool
+containsTree = foldr (\x rest -> if x == 3 then True else rest) False
