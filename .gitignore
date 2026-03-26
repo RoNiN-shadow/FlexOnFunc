@@ -6,3 +6,5 @@ playfair
 *.out
 *.exe
 *.so
+
+dist-newstyle/*
