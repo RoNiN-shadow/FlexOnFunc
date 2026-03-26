@@ -1,3 +1,5 @@
+module LearnHaskell.Random.RandomLogic where
+
 import System.Random (randomR, StdGen)
 
 type Point = (Int, Int)
